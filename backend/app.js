@@ -7,10 +7,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login'); 
-var logoutRouter = require('./routes/logout'); 
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const loginRouter = require('./routes/login'); 
+const logoutRouter = require('./routes/logout'); 
 const adminLoginRouter = require('./routes/adminLogin'); 
 const adminLogoutRouter = require('./routes/adminLogout'); 
 const registerAdminRouter = require('./routes/registerAdmin');
