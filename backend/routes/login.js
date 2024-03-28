@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 
-// GET login page
+// Post login page
 router.post('/', function(req, res, next) {
   res.send('Login Page');
 });

@@ -1,7 +1,7 @@
 const express = require('express');
 var router = express.Router();
 
-// GET logout
+// Post logout
 router.post('/', function(req, res, next) {
   // Destroy the session
   req.session.destroy(function(err) {
