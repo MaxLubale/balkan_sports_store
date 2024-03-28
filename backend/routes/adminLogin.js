@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router();
+var router = express.Router();
 
 // GET admin login page
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
   res.send('Admin Login Page');
 });
 

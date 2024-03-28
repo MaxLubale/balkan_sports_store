@@ -1,11 +1,18 @@
 const express = require('express');
-const router = express.Router();
+var router = express.Router();
 
 // GET logout
-router.get('/', function(req, res, next) {
-  // Handle logout logic here
-  // This could involve destroying the session, clearing cookies, etc.
-  res.send('Logged out'); // Example response for successful logout
+router.post('/', function(req, res, next) {
+  // Destroy the session
+  req.session.destroy(function(err) {
+    if (err) {
+      console.error('Error destroying session:', err);
+      res.status(500).send('Error logging out');
+    } else {
+      // Redirect the user to the login page or any other page as needed
+      res.redirect('/login');
+    }
+  });
 });
 
 module.exports = router;

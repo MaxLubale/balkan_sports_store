@@ -1,16 +1,25 @@
 const express = require('express');
-const router = express.Router();
+var router = express.Router();
 
 // GET login page
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
   res.send('Login Page');
 });
 
 // POST login form submission
 router.post('/', function(req, res, next) {
-  // Handle login logic here
-  // This could involve checking user credentials, creating a session, etc.
-  res.send('Login Successful'); // Example response for successful login
+  const { username, password } = req.body;
+
+  // Example: Check if username and password are valid
+  if (username === 'user' && password === 'password') {
+    // If valid, create a session (You need to set up session middleware in your app.js)
+    req.session.isLoggedIn = true;
+    // Redirect to a dashboard or any other authenticated page
+    res.redirect('/dashboard');
+  } else {
+    // If not valid, render the login page again with an error message
+    res.send('Invalid username or password');
+  }
 });
 
 module.exports = router;

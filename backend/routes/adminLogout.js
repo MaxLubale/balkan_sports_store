@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router();
+var router = express.Router();
 
 // GET admin logout
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
   // Destroy admin session
   req.session.destroy(function(err) {
     if (err) {

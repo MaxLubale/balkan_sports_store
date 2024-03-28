@@ -16,7 +16,12 @@ const productSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true
-  }
+  },
+  picture: {
+    type: String,
+    required: true
+  },
+  // Add more fields as needed
 });
 
 const Product = mongoose.model('Product', productSchema);
