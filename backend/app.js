@@ -1,3 +1,16 @@
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/your-database-name', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+}).then(() => {
+  console.log('Connected to MongoDB');
+}).catch((error) => {
+  console.error('Error connecting to MongoDB:', error);
+});
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,6 +19,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/login'); 
+var logoutRouter = require('./routes/logout'); 
+const adminLoginRouter = require('./routes/admin/login'); 
+const adminLogoutRouter = require('./routes/admin/logout'); 
+
 
 var app = express();
 
@@ -21,6 +39,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', loginRouter); 
+app.use('/logout', logoutRouter); 
+app.use('/admin/login', adminLoginRouter); 
+app.use('/admin/logout', adminLogoutRouter); 
+
+
+// Session middleware setup
+app.use(session({
+  secret: 'your-secret-key', // Change this to a secret key
+  resave: false,
+  saveUninitialized: true
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,3 +69,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
