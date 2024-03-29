@@ -17,6 +17,7 @@ const registerAdminRouter = require('./routes/registerAdmin');
 const registerRouter = require('./routes/register');
 const productsRouter = require('./routes/products');
 const addProductRouter = require('./routes/addProduct');
+const userCartRouter = require('./routes/userCart');
 
 
 
@@ -59,6 +60,7 @@ app.use('/register-admin', registerAdminRouter);
 app.use('/register', registerRouter);
 app.use('/products', productsRouter);
 app.use('/add-product', addProductRouter);
+app.use('/user-cart', userCartRouter);
 
 const secretKey = crypto.randomBytes(64).toString('hex');
 // Session middleware setup
